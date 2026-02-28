@@ -1,8 +1,3 @@
-¡Enhorabuena por ese despliegue exitoso! Ver tu aplicación subida a la nube y funcionando con un enlace público es uno de los momentos más gratificantes del desarrollo. Habéis logrado transformar una idea abstracta en un producto funcional y multimodal.
-
-Para vender esta idea a usuarios, inversores o a los propios profesores de EDEM, el README.md no debe ser un manual de instrucciones técnico aburrido, sino un documento de visión comercial (un pitch deck en formato texto). Tiene que explicar el "por qué" antes que el "cómo".
-
-Aquí tienes el contenido perfecto para tu archivo README.md. Cópialo, pégalo en tu repositorio de GitHub y guárdalo.
 
 🐊 KROMO: Tu Gemelo Digital Evolutivo
 "El terapeuta, consejero y biógrafo que mejor te conoce, eres tú mismo."
