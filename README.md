@@ -1,44 +1,55 @@
+<h1 align="center">🧬 K R O M O</h1>
+<h3 align="center">EL PRIMER GEMELO DIGITAL EVOLUTIVO</h3>
 
-🐊 KROMO: Tu Gemelo Digital Evolutivo
-"El terapeuta, consejero y biógrafo que mejor te conoce, eres tú mismo."
+> *"No estamos construyendo un diario. Estamos programando la inmortalidad cognitiva mediante Inteligencia Artificial."*
 
-Bienvenido a Kromo, una plataforma diseñada para trascender el concepto tradicional del diario personal. Kromo no se limita a guardar texto; comprende, estructura y evoluciona tu identidad para crear una réplica digital de tu mente con la que podrás interactuar en el futuro.
+Kromo es una arquitectura de software diseñada para capturar, procesar y replicar la identidad humana. A través de un sistema conversacional proactivo, la aplicación extrae el conocimiento empírico del usuario, lo vectoriza y entrena a un **Gemelo Digital** capaz de razonar, recordar e interactuar en el futuro utilizando la personalidad exacta de su creador.
 
-Nuestra misión es preservar la identidad humana y el conocimiento empírico, permitiéndote no solo recordar quién eras, sino conversar con quien fuiste.
+---
 
-🌟 ¿Qué resuelve Kromo?
-Olvidamos el 80% de lo que vivimos, pensamos y aprendemos. Los diarios tradicionales son estáticos y sufren del "síndrome de la página en blanco". Kromo soluciona esto mediante una IA proactiva que te entrevista, extrae el valor real de tus experiencias y construye un puente conversacional entre tu "yo" del pasado, tu presente y tu futuro.
+## 🛠️ ARQUITECTURA TÉCNICA Y STACK DE DESARROLLO
 
-✨ Características Principales (Fase 1: MVP)
-Kromo está diseñado para que no tengas que esforzarte en escribir, sino que simplemente disfrutes conversando.
+Para lograr que una IA simule la conciencia de un usuario en tiempo real sin alucinaciones, hemos descartado los prompts estáticos y hemos implementado una arquitectura **RAG (Retrieval-Augmented Generation)** de última generación.
 
-⚙️ Onboarding Estratégico: Un cuestionario inicial que ancla tu identidad, ambiciones y valores fundamentales para que la IA sepa exactamente quién eres desde el minuto cero.
+### 1. Motor de Memoria Vectorial (ChromaDB)
+El cerebro de Kromo no es una base de datos relacional tradicional (SQL). Utilizamos **ChromaDB** para almacenar los recuerdos como *embeddings* vectoriales. Cuando el usuario hace una pregunta a su Gemelo Digital, el sistema realiza una búsqueda de similitud semántica (K-Nearest Neighbors) para inyectar en el contexto del LLM únicamente los recuerdos empíricos relevantes. **Resultado: Cero alucinaciones, 100% de precisión autobiográfica.**
 
-🐊 Krok, tu Entrevistador Personal: Olvídate de escribir un diario en solitario. Krok es un avatar simpático y curioso que charlará contigo sobre tu día. Te hará preguntas clave y, en silencio, irá construyendo tu red de recuerdos. ¡Cuanto más hables, más Nivel de Sabiduría ganarás!
+### 2. Orquestación Multimodal (Ecosistema Gemini)
+Kromo no depende de un solo modelo, sino de una orquestación inteligente de la API de Google Gemini:
+* **Razonamiento Lógico e Interacción:** Impulsado por `gemini-2.5-flash`. Este modelo se encarga de dar vida a *Krok* (el agente conversacional de extracción de datos) y de simular la personalidad del Gemelo Digital basándose en el contexto inyectado por ChromaDB.
+* **Inmersión Visual:** Integración directa con el SDK `google-genai` para invocar al modelo generador de imágenes. Transforma descripciones de recuerdos en representaciones visuales fotorrealistas o artísticas bajo demanda.
 
-🧠 La Singularidad (Tu Gemelo Digital): El núcleo de la aplicación. Hazle preguntas a tu Gemelo Digital (ej. "¿Cómo superé aquella crisis laboral?" o "¿Qué opinaba yo sobre este tema hace meses?"). La IA te responderá utilizando estrictamente los recuerdos y vivencias que le has ido contando.
+### 3. Frontend Reactivo y Gestión de Estado (Streamlit)
+La interfaz está construida íntegramente en Python mediante **Streamlit**. Hemos desarrollado un complejo sistema de `st.session_state` para mantener el historial de los chats, aislar la memoria temporal del usuario de la base de datos persistente y renderizar una interfaz fluida estilo *Single Page Application (SPA)*.
 
-📸 Cámara de Recuerdos: La inmersión multimodal. Escribe un recuerdo nostálgico y nuestra IA pintará una fotografía o ilustración de ese momento exacto en el estilo visual que prefieras.
+### 4. Resiliencia y Control de Errores (Error Handling)
+La aplicación cuenta con captura activa de excepciones (`google.api_core.exceptions.ResourceExhausted`). Si la API alcanza su límite de cuota, el sistema no colapsa: intercepta el error y la interfaz de usuario responde con un mensaje orgánico (ej. *"Los servidores están saturados, dame 60 segundos"*), protegiendo la Experiencia de Usuario (UX) en entornos de producción.
 
-🛡️ Privacidad Inquebrantable
-Entendemos que tu mente es tu activo más valioso. Por ello, Kromo funciona bajo un modelo de privacidad estricto. Tus memorias se estructuran en bases de datos aisladas y seguras. No vendemos tus datos a terceros; tu identidad te pertenece solo a ti.
+---
 
-🚀 Cómo empezar a usar Kromo ahora mismo
-No necesitas saber de código para probar la magia de Kromo. Solo sigue estos tres sencillos pasos:
+## 🚀 FLUJO DEL PRODUCTO (FASE 1: MVP)
 
-Consigue tu llave maestra: Necesitas una clave API gratuita de Google Gemini para encender los motores de Kromo. Puedes obtenerla en un minuto haciendo clic aquí: Google AI Studio.
+Kromo está estructurado en cuatro módulos interconectados que retroalimentan el sistema:
 
-Abre la aplicación: Accede a nuestro portal seguro en Streamlit Cloud.
+#### LA INICIALIZACIÓN (ARRANQUE EN FRÍO)
+Para evitar el síndrome de la página en blanco que mata la retención de los usuarios en las apps de *journaling*, exigimos un **Onboarding Estratégico**. El usuario define su identificador, rol profesional, ambición vital y creencias fundamentales. Estos datos se guardan en un JSON local (`kromo_perfil.json`) que actúa como el *System Prompt* fundacional de todas las interacciones futuras.
 
-Inicia sesión: Pega tu clave API en la barra lateral izquierda, completa el breve perfil de "Onboarding" en la primera pestaña y ¡listo! Ya puedes empezar a charlar con Krok y construir tu Gemelo Digital.
+#### EL EXTRACTOR DE DATOS (AGENTE KROK)
+El usuario interactúa diariamente con un avatar gamificado. Mediante encadenamiento de prompts (*Prompt Chaining*), Krok lee el historial reciente y genera **preguntas dinámicas y psicológicas** diseñadas específicamente para extraer información que aún no existe en la base de datos vectorial del usuario, maximizando la eficiencia de la recolección de datos.
 
-🔮 El Futuro: El Marketplace de Mentes (Roadmap)
-La Fase 1 es solo el comienzo. La visión completa de Kromo incluye evolucionar hacia un mercado B2C descentralizado:
+#### LA SINGULARIDAD (INVOCACIÓN DEL GEMELO)
+El módulo de salida. El usuario lanza un *query* a su yo del pasado. La arquitectura RAG entra en acción, recupera los 5 vectores más cercanos al *query* y obliga al LLM a generar una respuesta utilizando **ESTRICTAMENTE** esos documentos, simulando una conversación real y coherente con uno mismo.
 
-No escales tu tiempo, escala tu mente: Expertos (nutricionistas, inversores, psicólogos) podrán entrenar a su propio avatar con su conocimiento y vender acceso a miles de personas simultáneamente.
+#### LA CÁMARA MULTIMODAL
+Traducción de texto a píxeles. El usuario introduce una memoria nostálgica y Kromo utiliza la inyección de prompts para estructurar una petición visual perfecta, devolviendo una fotografía generada por IA del momento exacto.
 
-Sala de Juntas Mental: Imagina tener un chat grupal debatiendo tu próximo proyecto de vida con tu Gemelo Digital y el avatar de un experto financiero.
+---
 
-Herencia Digital: Genera un token de acceso para dejar tu Gemelo Digital a las siguientes generaciones para que puedan pedirte consejo cuando ya no estés.
+## 💻 DESPLIEGUE EN ENTORNOS LOCALES
 
-Kromo no es solo software, es tu legado.
+Si eres un desarrollador y quieres auditar o escalar esta arquitectura en tu propia máquina, sigue estos pasos de clonación:
+
+1. Clona el repositorio e inicializa un entorno virtual aislado:
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate
